@@ -26,7 +26,7 @@ test('Place the order', async ({page}) => {
 
     async route => {
         const response =  await page.request.fetch(route.request());
-        let body =fakePayLoadOrders;
+        let body = fakePayLoadOrders;
             route.fulfill({
                 response,
                 body
