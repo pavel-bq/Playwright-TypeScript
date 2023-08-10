@@ -3,7 +3,9 @@ export type LoginPayLoad = {
     userPassword: string
 };
 
-export type Response = {
-    token: undefined, 
-    orderId: undefined
+export type OrderPayLoad = {
+    orders: [{ 
+        country: string, 
+        productOrderedId: string
+    }]
 };
