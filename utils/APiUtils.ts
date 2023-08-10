@@ -5,7 +5,6 @@ export class APiUtils
 {
     private readonly apiContext: APIRequestContext;
     private readonly loginPayLoad: LoginPayLoad;
-    //private response: Response;
 
     constructor(apiContext: APIRequestContext, loginPayLoad: LoginPayLoad)
     {
@@ -14,8 +13,6 @@ export class APiUtils
     }
 
     async getToken() {
-        // console.log('this.apiContext', this.apiContext);
-        // console.log('this.loginPayLoad', this.loginPayLoad);
         const loginResponse =  await  this.apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login", {
             data: this.loginPayLoad
         } )//200,201,

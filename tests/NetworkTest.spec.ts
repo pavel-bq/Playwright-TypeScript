@@ -1,9 +1,8 @@
 import {test, request} from '@playwright/test';
 import {APiUtils} from '../utils/APiUtils';
 import {LoginPayLoad, OrderPayLoad} from '../utils/types'
+import {loginUser} from '../utils/loginPayLoad';
 
-const userdata =  JSON.parse(JSON.stringify(require("../utils/placeorderTestData.json")));
-const loginPayLoad: LoginPayLoad = {userEmail: userdata[0].username, userPassword: userdata[0].password}
 const orderPayLoad: OrderPayLoad = {orders:[{country:"India",productOrderedId:"6262e95ae26b7e1a10e89bf0"}]};
 const fakePayLoadOrders = {data:[], message:"No Orders"};
 
@@ -11,7 +10,7 @@ let response;
 
 test.beforeAll( async()=> {
    const apiContext = await request.newContext();
-   const apiUtils = new APiUtils(apiContext,loginPayLoad);
+   const apiUtils = new APiUtils(apiContext, loginUser);
    response =  await apiUtils.createOrder(orderPayLoad);
 });
 

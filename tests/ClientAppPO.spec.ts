@@ -1,9 +1,48 @@
 import {test, expect, request} from '@playwright/test';
-import {APiUtils} from '../utils/APiUtils';
 import {LoginPayLoad, OrderPayLoad} from '../utils/types'
-const userdata =  JSON.parse(JSON.stringify(require("../utils/placeorderTestData.json")));
+import {loginUser} from '../utils/loginPayLoad';
 
-const loginPayLoad: LoginPayLoad = {userEmail: userdata[0].username, userPassword: userdata[0].passwoed}
-const fakePayLoadOrders = {data:[], message:"No Orders"};
+const {customtest} = require('../utils/test-base');
+const {POManager} = require('../pageobjects/POManager');
 
-// TODO....
+test(`@Webs Client App login for ${loginUser.productName}`, async ({page}) => {
+    const poManager = new POManager(page);
+    //js file- Login js, DashboardPage
+    const products = page.locator(".card-body");
+    const loginPage = poManager.getLoginPage();
+    await loginPage.goTo();
+    console.log('######## - ', loginUser.userEmail, loginUser.userPassword, ' -##########');
+    await loginPage.validLogin(loginUser.userEmail, loginUser.userPassword);
+    const dashboardPage = poManager.getDashboardPage();
+    await dashboardPage.searchProductAddCart(loginUser.productName);
+    await dashboardPage.navigateToCart();
+
+    const cartPage = poManager.getCartPage();
+    await cartPage.VerifyProductIsDisplayed(loginUser.productName);
+    await cartPage.Checkout();
+
+    const ordersReviewPage = poManager.getOrdersReviewPage();
+    await ordersReviewPage.searchCountryAndSelect("ind","India");
+    const orderId = await ordersReviewPage.SubmitAndGetOrderId();
+    console.log(orderId);
+    await dashboardPage.navigateToOrders();
+    const ordersHistoryPage = poManager.getOrdersHistoryPage();
+    await ordersHistoryPage.searchOrderAndSelect(orderId);
+    expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
+});
+
+customtest(`Client App login`, async ({page, testDataForOrder}) => {
+    const poManager = new POManager(page);
+    //js file- Login js, DashboardPage
+    const products = page.locator(".card-body");
+    const loginPage = poManager.getLoginPage();
+    await loginPage.goTo();
+    await loginPage.validLogin(testDataForOrder.username,testDataForOrder.password);
+    const dashboardPage = poManager.getDashboardPage();
+    await dashboardPage.searchProductAddCart(testDataForOrder.productName);
+    await dashboardPage.navigateToCart();
+
+    const cartPage = poManager.getCartPage();
+    await cartPage.VerifyProductIsDisplayed(testDataForOrder.productName);
+    await cartPage.Checkout();
+});

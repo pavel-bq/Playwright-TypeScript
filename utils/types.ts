@@ -1,6 +1,7 @@
 export type LoginPayLoad = {
     userEmail: string,
-    userPassword: string
+    userPassword: string,
+    productName: string
 };
 
 export type OrderPayLoad = {
