@@ -21,8 +21,8 @@ test('Browser Playwritght Test', async ({browser}) => {
         singIn.click()
     ]);
 
-    console.log(await cartdTitles.first().textContent());
-    console.log(await cartdTitles.nth(1).textContent());
+    // console.log(await cartdTitles.first().textContent());
+    // console.log(await cartdTitles.nth(1).textContent());
     const allTitles = await cartdTitles.allTextContents();
     
     console.log(allTitles);
