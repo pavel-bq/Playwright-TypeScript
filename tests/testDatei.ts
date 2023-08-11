@@ -1,0 +1,1 @@
+console.log("Diese Datei soll gelöscht werden! :)");
