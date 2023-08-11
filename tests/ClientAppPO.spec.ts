@@ -1,5 +1,4 @@
 import {test, expect, request} from '@playwright/test';
-import {LoginPayLoad, OrderPayLoad} from '../utils/types'
 import {loginUser} from '../utils/loginPayLoad';
 
 const {customtest} = require('../utils/test-base');

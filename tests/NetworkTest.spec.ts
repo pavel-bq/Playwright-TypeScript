@@ -26,10 +26,12 @@ test('Place the order', async ({page}) => {
     async route => {
         const response =  await page.request.fetch(route.request());
         let body = fakePayLoadOrders;
+        if (typeof body == 'string') {
             route.fulfill({
                 response,
                 body
             });
+        }
             //intercepting response - APi response->{ playwright fakeresponse}->browser->render data on front end
     });
 
