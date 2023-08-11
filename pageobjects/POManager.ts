@@ -14,7 +14,7 @@ export class POManager
     private readonly ordersReviewPage: OrdersReviewPage;
     private readonly cartPage: CartPage;
 
-    constructor(page)
+    constructor(page: Page)
     {
         this.page = page;
         this.loginPage = new LoginPage(this.page);
