@@ -1,6 +1,1 @@
-name: Pavel-Test
-on:
-  push:
-    branches:
-      - master
-  
+
