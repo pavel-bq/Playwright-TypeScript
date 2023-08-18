@@ -6,7 +6,7 @@
 name: My-Test
 env:
   APPLICATION_NAME  : "MyTask"
-  PACKAGE_NAME      : "task_deploy_file_ve_${{githab.sha}}"
+  PACKAGE_NAME      : "task_deploy_file_ve_${{github.sha}}"
 
 on:
   push:
