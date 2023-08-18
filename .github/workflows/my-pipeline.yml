@@ -7,7 +7,7 @@ on:
 
 jobs:   
   my-testing:
-    runs-on: ubuntu-latest
+    runs-on: nodejs-latest
     steps:
       - uses: actions/checkout@v1
       - name: Pavel_Test
