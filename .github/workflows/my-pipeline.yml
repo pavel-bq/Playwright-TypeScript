@@ -8,8 +8,16 @@ on:
 jobs:   
   my-testing:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v1
-      - name: Pavel_Test
-        run: echo Hello Pavel!
+    - name: Pavel_Test
+      run: echo "Hello Pavel!"
+        
+  my-deploy:
+    runs-on: ubuntu-latest
+    needs: [my-testing]
+    
+    steps:
+      - name: Pavel_Test2
+        run: echo Hello World!
       
