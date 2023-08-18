@@ -1,2 +1,5 @@
 name: My-Test
+on: [push]
+
+
   
