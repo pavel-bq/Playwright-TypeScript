@@ -33,6 +33,9 @@ jobs:
   my-deploy:
     runs-on: ubuntu-latest
     needs: [my-testing]
+    env:
+      VAR1: "Variable 1"
+      VAR2: "Variable 2"
     
     steps:
       - name: Pavel_Test2
@@ -40,3 +43,8 @@ jobs:
 
       - name: Deploy_Package
         run : echo "Deploy packege name is ${{env.PACKAGE_NAME}}"
+
+      - name: My variables
+        run : 
+          echo "V = ${{env.VAR1}}"
+          echo "V = ${{env.VAR2}}"
