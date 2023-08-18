@@ -7,4 +7,9 @@ on:
 
 jobs:   
   my-testing:
-    runs-on: nodejs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Pavel_Test
+        run: echo Hello Pavel!
+      
