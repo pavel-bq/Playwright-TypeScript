@@ -1,4 +1,12 @@
+#----------------------------
+# GitHub Action 1 - Basics
+#
+# Copyleft (c) by Pavel Lukin
+#----------------------------
 name: My-Test
+env:
+  APPLICATION_NAME  : "MyTask"
+  PACKAGE_NAME      : "task_deploy_file_ve_${{githab.sha}}"
 
 on:
   push:
@@ -11,7 +19,13 @@ jobs:
     
     steps:
     - name: Pavel_Test
-      run: echo "Hello Pavel!"
+      run : echo "Hello Pavel!"
+
+    - name: Execure
+      run : 
+        echo "Meine Message1"
+        echo "Meine Message2"
+        echo "Application name:${{ env.APPLICATION_NAME }}"
         
   my-deploy:
     runs-on: ubuntu-latest
@@ -20,4 +34,6 @@ jobs:
     steps:
       - name: Pavel_Test2
         run: echo Hello World!
-      
+
+      - name: Deploy_Package
+        run: echo "Deploy packege name is ${{env.PACKAGE_NAME}}"
