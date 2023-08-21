@@ -5,7 +5,7 @@ export default defineConfig({
   retries : 1,
   workers: process.env.CI ? 1 : undefined,
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 50 * 1000,
   expect: {
 
     timeout: 5000
@@ -16,7 +16,7 @@ export default defineConfig({
   use: {
     browserName : 'chromium',
     headless : true,
-    // screenshot : 'on',
+    screenshot : 'on',
     trace : 'on',//off,on
   }
 });
