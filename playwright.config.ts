@@ -2,8 +2,8 @@ import { defineConfig, devices } from '@playwright/test'
 
 export default defineConfig({
   testDir: './tests',
-  // retries :2,
-
+  retries : 1,
+  workers: process.env.CI ? 1 : undefined,
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
