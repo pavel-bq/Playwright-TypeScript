@@ -1,0 +1,50 @@
+#----------------------------
+# GitHub Action 1 - Basics
+#
+# Copyleft (c) by Pavel Lukin
+#----------------------------
+  name: My-Test
+  env:
+    APPLICATION_NAME  : "MyTask"
+    PACKAGE_NAME      : "task_deploy_file_ve_${{github.sha}}"
+  
+  on:
+    push:
+      branches: 
+        - master
+  
+  jobs:   
+    my-testing:
+      runs-on: ubuntu-latest
+      
+      steps:
+      - name: Pavel_Test
+        run : echo "Hello Pavel!"
+  
+      - name: Execure
+        run : 
+          echo "Meine Message1"
+          echo "Meine Message2"
+          echo "Application name:${{ env.APPLICATION_NAME }}"
+  
+      - name: List current folder
+        run : ls -la
+          
+    my-deploy:
+      runs-on: ubuntu-latest
+      needs: [my-testing]
+      env:
+        VAR1: "Variable 1"
+        VAR2: "Variable 2"
+      
+      steps:
+        - name: Pavel_Test2
+          run : echo Hello World!
+  
+        - name: Deploy_Package
+          run : echo "Deploy packege name is ${{env.PACKAGE_NAME}}"
+  
+        - name: My variables
+          run : 
+            echo "V = ${{env.VAR1}}"
+            echo "V = ${{env.VAR2}}"
