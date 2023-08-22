@@ -1,6 +1,8 @@
 name: Pull request labeler
 
 on:
+  schedule:
+    - cron: "25 12 * * *"
   push:
     branches: 
       - master
