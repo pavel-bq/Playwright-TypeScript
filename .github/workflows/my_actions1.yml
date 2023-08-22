@@ -2,10 +2,10 @@ name: Pull request labeler
 
 on:
   schedule:
-    - cron: "35 12 * * *"
-  # push:
-  #   branches: 
-  #     - master
+    - cron: "00 14 * * *"
+  push:
+    branches: 
+      - master
 
 jobs:
   triage:
