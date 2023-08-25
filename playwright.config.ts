@@ -5,7 +5,7 @@ export default defineConfig({
   retries : 1,
   workers: process.env.CI ? 1 : undefined,
   /* Maximum time one test can run for. */
-  timeout: 50 * 1000,
+  timeout: 30 * 1000,
   expect: {
     timeout: 5000
   },
