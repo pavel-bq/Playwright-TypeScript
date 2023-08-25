@@ -36,7 +36,7 @@
       env:
         VAR1: "Variable 1"
         VAR2: "Variable 2"
-      
+      if: github.event_name == 'push'
       steps:
         - name: Pavel_Test2
           run : echo Hello World!

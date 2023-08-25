@@ -7,7 +7,6 @@ export default defineConfig({
   /* Maximum time one test can run for. */
   timeout: 50 * 1000,
   expect: {
-
     timeout: 5000
   },
 
@@ -15,7 +14,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless : true,
-    screenshot : 'on',
+    screenshot: 'only-on-failure',
     trace : 'on',//off,on
   },
   projects: [

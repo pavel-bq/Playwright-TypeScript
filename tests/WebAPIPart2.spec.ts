@@ -6,7 +6,7 @@ test.beforeAll(async({browser})=>
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto("https://rahulshettyacademy.com/client");
-    await page.locator("#userEmail").fill("rahulshetty@gmail.com");
+    await page.locator("#userEmail").fill("123rahulshetty@gmail.com");
     await page.locator("#userPassword").type("Iamking@000");
     await page.locator("[value='Login']").click();
     await page.waitForLoadState('networkidle');
@@ -14,7 +14,7 @@ test.beforeAll(async({browser})=>
     webContext=  await browser.newContext({storageState:'state.json'});
 });
 
-test('Client App login', async () => {
+test.only('Client App login', async () => {
     //fail
     const email = "rahulshetty@gmail.com";
     const productName = 'iphone 13 pro';
